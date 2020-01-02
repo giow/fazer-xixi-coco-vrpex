@@ -4,7 +4,7 @@ local Proxy = module("vrp", "lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 emP = Tunnel.getInterface("")
 
-ESX = nil
+NOAH = nil
 
 Config = {
     Commands = true,
@@ -14,14 +14,14 @@ Config = {
 
 
 Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+	while NOAH == nil do
+		TriggerEvent('NOAH:getSharedObject', function(obj) NOAH = obj end)
 		Citizen.Wait(1)
 	end
 end)
 
-RegisterNetEvent('esx-qalle-needs:openMenu')
-AddEventHandler('esx-qalle-needs:openMenu', function()
+RegisterNetEvent('NOAH-qalle-needs:openMenu')
+AddEventHandler('NOAH-qalle-needs:openMenu', function()
     OpenNeedsMenu()
 end)
 
@@ -29,15 +29,15 @@ if Config.Commands then
 
     RegisterCommand('mijar', function()
         if Config.StatusBars then
-            TriggerEvent('esx_status:getStatus', 'pee', function(status)
+            TriggerEvent('NOAH_status:getStatus', 'pee', function(status)
                 if status.val < 200000 then
-                    TriggerServerEvent('esx-qalle-needs:add', 'pee', 1000000)
+                    TriggerServerEvent('NOAH-qalle-needs:add', 'pee', 1000000)
                     local hashSkin = GetHashKey("mp_m_freemode_01")
 
                     if GetEntityModel(PlayerPedId()) == hashSkin then
-                        TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'male')
+                        TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'male')
                     else
-                        TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'female')
+                        TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'female')
                     end
 
                 else
@@ -48,25 +48,25 @@ if Config.Commands then
             local hashSkin = GetHashKey("mp_m_freemode_01")
 
             if GetEntityModel(PlayerPedId()) == hashSkin then
-                TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'male')
+                TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'male')
             else
-                TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'female')
+                TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'female')
             end
         end
     end, false)
 
     RegisterCommand('cagar', function()
         if Config.StatusBars then
-            TriggerEvent('esx_status:getStatus', 'shit', function(status)
+            TriggerEvent('NOAH_status:getStatus', 'shit', function(status)
                 if status.val < 200000 then
-                    TriggerServerEvent('esx-qalle-needs:add', 'shit', 1000000)
-                    TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'poop')
+                    TriggerServerEvent('NOAH-qalle-needs:add', 'shit', 1000000)
+                    TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'poop')
                 else
                     TriggerEvent("vrp_notify","sucesso","Você não precisa fazer cocô")
                 end
             end)
         else
-            TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'poop')
+            TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'poop')
         end
     end, false)
 else
@@ -83,15 +83,15 @@ end
         if value == 'pee' then
             menu.close()
             if Config.StatusBars then
-                TriggerEvent('esx_status:getStatus', 'pee', function(status)
+                TriggerEvent('NOAH_status:getStatus', 'pee', function(status)
                     if status.val < 200000 then
-                        TriggerServerEvent('esx-qalle-needs:add', 'pee', 1000000)
+                        TriggerServerEvent('NOAH-qalle-needs:add', 'pee', 1000000)
                         local hashSkin = GetHashKey("mp_m_freemode_01")
 
                         if GetEntityModel(PlayerPedId()) == hashSkin then
-                            TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'male')
+                            TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'male')
                         else
-                            TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'female')
+                            TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'female')
                         end
 
                     else
@@ -102,30 +102,30 @@ end
                 local hashSkin = GetHashKey("mp_m_freemode_01")
 
                 if GetEntityModel(PlayerPedId()) == hashSkin then
-                    TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'male')
+                    TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'male')
                 else
-                    TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'female')
+                    TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'pee', 'female')
                 end
             end
 
         elseif value == 'poop' then
             menu.close()
             if Config.StatusBars then
-                TriggerEvent('esx_status:getStatus', 'shit', function(status)
+                TriggerEvent('NOAH_status:getStatus', 'shit', function(status)
                     if status.val < 200000 then
-                        TriggerServerEvent('esx-qalle-needs:add', 'shit', 1000000)
-                        TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'poop')
+                        TriggerServerEvent('NOAH-qalle-needs:add', 'shit', 1000000)
+                        TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'poop')
                     else
                         TriggerEvent("vrp_notify","sucesso","Você não precisa fazer coco")
                     end
                 end)
             else
-                TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'poop')
+                TriggerServerEvent('NOAH-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'poop')
             end
         end
 
-RegisterNetEvent('esx-qalle-needs:syncCL')
-AddEventHandler('esx-qalle-needs:syncCL', function(ped, need, sex)
+RegisterNetEvent('NOAH-qalle-needs:syncCL')
+AddEventHandler('NOAH-qalle-needs:syncCL', function(ped, need, sex)
     if need == 'pee' then
         Pee(ped, sex)
     else
