@@ -1,14 +1,14 @@
-ESX = nil
+NOAH = nil
 
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('NOAH:getSharedObject', function(obj) NOAH = obj end)
 
-RegisterServerEvent('esx-qalle-needs:sync')
-AddEventHandler('esx-qalle-needs:sync', function(player, need, gender)
-    TriggerClientEvent('esx-qalle-needs:syncCL', -1, player, need, gender)
+RegisterServerEvent('NOAH-qalle-needs:sync')
+AddEventHandler('NOAH-qalle-needs:sync', function(player, need, gender)
+    TriggerClientEvent('NOAH-qalle-needs:syncCL', -1, player, need, gender)
 end)
 
-RegisterServerEvent('esx-qalle-needs:add')
-AddEventHandler('esx-qalle-needs:add', function(need, amount)
+RegisterServerEvent('NOAH-qalle-needs:add')
+AddEventHandler('NOAH-qalle-needs:add', function(need, amount)
     local src = tonumber(source)
-    TriggerClientEvent('esx_status:add', src, need, amount)
+    TriggerClientEvent('NOAH_status:add', src, need, amount)
 end)
