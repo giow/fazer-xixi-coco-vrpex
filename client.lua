@@ -4,7 +4,7 @@ local Proxy = module("vrp", "lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 emP = Tunnel.getInterface("")
 
-NOAH = nil
+NOAH                             = nil
 
 Config = {
     Commands = true,
