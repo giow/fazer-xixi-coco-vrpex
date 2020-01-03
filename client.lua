@@ -41,7 +41,7 @@ if Config.Commands then
                     end
 
                 else
-                    TriggerEvent("vrp_notify","sucesso","Você não precisa fazer xixi")
+                    TriggerEvent("vrp_notify","sucesso","Você não necessita fazer xixi")
                 end
             end)
         else
@@ -62,7 +62,7 @@ if Config.Commands then
                     TriggerServerEvent('esx-qalle-needs:add', 'shit', 1000000)
                     TriggerServerEvent('esx-qalle-needs:sync', GetPlayerServerId(PlayerId()), 'poop')
                 else
-                    TriggerEvent("vrp_notify","sucesso","Você não precisa fazer cocô")
+                    TriggerEvent("vrp_notify","sucesso","Você não necessita fazer cocô")
                 end
             end)
         else
